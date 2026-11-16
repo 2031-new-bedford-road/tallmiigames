@@ -4,23 +4,33 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#123b25">
 <title>Tallmii Games</title>
 <style>
-:root{color-scheme:dark;--bg:#08130c;--green:#39c66b;--light:#a7f3bd;--panel:#11251a;--line:#245235}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -20%,#1d6335 0,transparent 55%),var(--bg);color:#effff2;font:15px/1.5 system-ui,Segoe UI,sans-serif}
-main{max-width:1100px;margin:auto;padding:38px 22px}.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:1px}.logo{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--green);color:#06200e;font-size:23px}
-h1{font-size:clamp(36px,7vw,60px);line-height:1.05;margin:54px 0 10px;letter-spacing:-2px}h1 span{color:var(--green)}p{color:#a9c6b0;margin:0 0 32px}
-h2{font-size:17px;margin:0 0 16px}.games{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px}
-.game{aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between;padding:20px;text-decoration:none;color:#effff2;background:linear-gradient(145deg,#183b25,#102719);border:1px solid var(--line);border-radius:18px;transition:transform .18s,border-color .18s,box-shadow .18s}
-.game:hover{transform:translateY(-5px);border-color:var(--green);box-shadow:0 14px 35px #0007}.emoji{font-size:48px}.name{font-size:19px;font-weight:800}.tag{font-size:12px;color:#a9c6b0}
-footer{margin-top:48px;color:#6e9278;font-size:12px}
+:root{color-scheme:dark;--bg:#0b160e;--green:#39c66b;--panel:#14251a;--line:#2b5638}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:#effff2;font:15px/1.5 system-ui,Segoe UI,sans-serif}
+main{max-width:1100px;margin:auto;padding:38px 22px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:1px}
+.logo{display:grid;place-items:center;width:42px;height:42px;border-radius:8px;background:var(--green);color:#06200e;font-size:23px}
+h1{font-size:clamp(36px,7vw,60px);line-height:1.05;margin:54px 0 10px;letter-spacing:-2px}
+h1 span{color:var(--green)}
+p{color:#a9c6b0;margin:0 0 32px}
+h2{font-size:17px;margin:0 0 16px}
+.games{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px}
+.game{aspect-ratio:1/1;display:flex;flex-direction:column;overflow:hidden;text-decoration:none;color:#effff2;background:#14251a;border:1px solid var(--line);border-radius:12px;transition:transform .15s,border-color .15s}
+.game:hover{transform:translateY(-3px);border-color:var(--green)}
+.game img{display:block;width:100%;height:72%;object-fit:cover;background:#203b28}
+.game-info{padding:10px 13px;display:flex;flex-direction:column;justify-content:center;flex:1}
+.name{font-size:17px;font-weight:800}
+.tag{font-size:12px;color:#a9c6b0}
+footer{margin-top:48px;color:#789580;font-size:12px}
 </style>
 </head>
 <body><main>
 <header class="brand"><div class="logo">T</div><span>TALLMII GAMES</span></header>
 <h1>Choose a <span>game.</span></h1>
-<p>Click a square to open that game on its own page.</p>
+<p>Click a game square to open it on its own page.</p>
 <section aria-label="Games"><h2>GAME LIBRARY</h2><div class="games">
-<a class="game" href="geo.html"><span class="emoji">🌎</span><span><span class="name">Geo</span><br><span class="tag">Explore the world</span></span></a>
-<a class="game" href="mario.html"><span class="emoji">🍄</span><span><span class="name">Mario</span><br><span class="tag">Jump into an adventure</span></span></a>
+<a class="game" href="geo.html"><img src="gd.jpg" alt="Geo game icon"><span class="game-info"><span class="name">Geo</span><span class="tag">Explore the world</span></span></a>
+<a class="game" href="mario.html"><img src="images/sm64.jpg" alt="Super Mario 64 game icon"><span class="game-info"><span class="name">Mario</span><span class="tag">Jump into an adventure</span></span></a>
 </div></section>
 <footer>Made to play · Tallmii Games</footer>
 </main></body></html>
