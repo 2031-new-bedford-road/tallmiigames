@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b13">
+  <title>Tallmii Games</title>
+  <style>
+    :root{color-scheme:dark;--bg:#090b13;--panel:#121625;--panel2:#191f31;--line:#293149;--text:#f4f6ff;--muted:#9ba6c2;--accent:#8b72ff;--cyan:#56d9e8}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% -10%,#25204d 0,transparent 42%),radial-gradient(ellipse at 100% 10%,#10333b 0,transparent 34%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+    button,input{font:inherit}
+    .shell{max-width:1440px;margin:auto;padding:28px clamp(16px,4vw,52px) 48px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:38px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:21px;letter-spacing:-.7px}
+    .logo{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--accent),#4acbda);color:#080a12;font-size:22px;box-shadow:0 8px 30px #7864ff44}
+    .status{color:var(--muted);font-size:13px}
+    .hero{margin:20px 0 30px}
+    .eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+    h1{font-size:clamp(34px,6vw,62px);line-height:1.04;letter-spacing:-2.5px;margin:9px 0 12px}
+    h1 span{background:linear-gradient(90deg,#a994ff,#65e0e9);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{color:var(--muted);max-width:600px;margin:0;font-size:16px}
+    .toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:28px 0 16px;flex-wrap:wrap}
+    .toolbar h2{font-size:17px;margin:0}
+    .search{width:min(100%,300px);background:#111625;border:1px solid var(--line);border-radius:12px;padding:11px 14px;color:var(--text);outline:none}
+    .search:focus{border-color:var(--accent);box-shadow:0 0 0 3px #8b72ff22}
+    .games{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+    .game{border:1px solid var(--line);border-radius:17px;padding:17px;background:linear-gradient(145deg,#171d2e,#101421);text-align:left;color:var(--text);cursor:pointer;transition:.18s ease;min-height:138px}
+    .game:hover,.game.active{transform:translateY(-2px);border-color:#8b72ff;box-shadow:0 10px 32px #0005}
+    .game.active{background:linear-gradient(145deg,#252044,#131b2a)}
+    .game-icon{font-size:26px;margin-bottom:9px}
+    .game strong{display:block;font-size:15px;margin-bottom:4px}
+    .game small{color:var(--muted)}
+    .play{margin-top:30px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#0d111c;box-shadow:0 24px 70px #0006}
+    .playbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 17px;background:#131929;border-bottom:1px solid var(--line);flex-wrap:wrap}
+    .playing{display:flex;align-items:center;gap:10px;font-weight:750}
+    .dot{width:8px;height:8px;border-radius:50%;background:#57df9a;box-shadow:0 0 12px #57df9a}
+    .actions{display:flex;gap:8px;flex-wrap:wrap}
+    .action{border:1px solid #35405a;background:#1a2235;color:var(--text);padding:8px 12px;border-radius:9px;text-decoration:none;cursor:pointer;font-size:12px;font-weight:700}
+    .action:hover{border-color:var(--accent);background:#252b43}
+    .frame-wrap{height:min(72vh,760px);min-height:390px;background:#05070c;position:relative}
+    iframe{width:100%;height:100%;border:0;background:#05070c}
+    .hint{padding:11px 16px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+    .empty{display:none;color:var(--muted);padding:22px;text-align:center}
+    footer{text-align:center;color:#737f9d;font-size:12px;padding-top:24px}
+    @media(max-width:600px){.shell{padding-top:18px}header{margin-bottom:25px}.frame-wrap{height:65vh;min-height:340px}h1{letter-spacing:-1.5px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="brand"><div class="logo">T</div><span>TALLMII GAMES</span></div>
+      <div class="status">Your little corner of the internet 🎮</div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">Pick a game. Jump in.</div>
+      <h1>Ready, set, <span>play.</span></h1>
+      <p>A simple game hub. Choose a game below and it will load right here—no extra tabs needed.</p>
+    </section>
+
+    <section aria-label="Game library">
+      <div class="toolbar">
+        <h2>Game library</h2>
+        <input class="search" id="search" type="search" placeholder="Search games..." aria-label="Search games">
+      </div>
+      <div class="games" id="games">
+        <button class="game active" data-name="Geo" data-url="https://monoxide.dev/truffled/geo">
+          <div class="game-icon">🌎</div><strong>Geo</strong><small>Explore the world</small>
+        </button>
+        <button class="game" data-name="Mario" data-url="https://mario-ezk.pages.dev/">
+          <div class="game-icon">🍄</div><strong>Mario</strong><small>Jump into an adventure</small>
+        </button>
+      </div>
+      <div class="empty" id="empty">No games match that search.</div>
+    </section>
+
+    <section class="play" aria-label="Game player">
+      <div class="playbar">
+        <div class="playing"><span class="dot"></span><span id="game-title">Now playing: Geo</span></div>
+        <div class="actions">
+          <a class="action" id="open-link" href="https://monoxide.dev/truffled/geo" target="_blank" rel="noopener noreferrer">Open in new tab ↗</a>
+          <button class="action" id="fullscreen" type="button">Fullscreen ⛶</button>
+        </div>
+      </div>
+      <div class="frame-wrap" id="frame-wrap">
+        <iframe id="player" src="https://monoxide.dev/truffled/geo" title="Geo game" allow="fullscreen; autoplay; gamepad" allowfullscreen loading="eager" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div class="hint">If a game does not appear, that site may block iframe embedding. Use “Open in new tab” to play it directly.</div>
+    </section>
+    <footer>Made to play · Tallmii Games</footer>
+  </main>
+  <script>
+    const cards = [...document.querySelectorAll('.game')];
+    const player = document.getElementById('player');
+    const title = document.getElementById('game-title');
+    const openLink = document.getElementById('open-link');
+    const search = document.getElementById('search');
+    const empty = document.getElementById('empty');
+
+    function selectGame(card) {
+      cards.forEach(item => item.classList.toggle('active', item === card));
+      const name = card.dataset.name;
+      const url = card.dataset.url;
+      player.src = url;
+      player.title = name + ' game';
+      title.textContent = 'Now playing: ' + name;
+      openLink.href = url;
+    }
+    cards.forEach(card => card.addEventListener('click', () => selectGame(card)));
+    search.addEventListener('input', () => {
+      const term = search.value.trim().toLowerCase();
+      let visible = 0;
+      cards.forEach(card => {
+        const match = (card.dataset.name + ' ' + card.innerText).toLowerCase().includes(term);
+        card.hidden = !match;
+        if (match) visible++;
+      });
+      empty.style.display = visible ? 'none' : 'block';
+    });
+    document.getElementById('fullscreen').addEventListener('click', async () => {
+      const target = document.getElementById('frame-wrap');
+      try {
+        if (!document.fullscreenElement) await target.requestFullscreen();
+        else await document.exitFullscreen();
+      } catch (error) {
+        alert('Fullscreen is not available in this browser.');
+      }
+    });
+  </script>
+</body>
+</html>
