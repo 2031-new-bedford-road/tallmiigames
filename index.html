@@ -1,23 +1,26 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#123b25">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#123b25">
 <title>Tallmii Games</title>
 <style>
 :root{color-scheme:dark;--bg:#0b160e;--green:#39c66b;--panel:#14251a;--line:#2b5638}
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;background:var(--bg);color:#effff2;font:15px/1.5 system-ui,Segoe UI,sans-serif}
 main{max-width:1100px;margin:auto;padding:38px 22px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:1px}
+.brand{display:inline-flex;align-items:center;gap:12px;font-weight:900;letter-spacing:1px;text-decoration:none;color:#effff2}
 .logo{display:grid;place-items:center;width:42px;height:42px;border-radius:8px;background:var(--green);color:#06200e;font-size:23px}
+.brand:hover span:last-child{color:var(--green)}
 h1{font-size:clamp(36px,7vw,60px);line-height:1.05;margin:54px 0 10px;letter-spacing:-2px}
 h1 span{color:var(--green)}
 p{color:#a9c6b0;margin:0 0 32px}
 h2{font-size:17px;margin:0 0 16px}
 .games{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px}
-.game{aspect-ratio:1/1;display:flex;flex-direction:column;overflow:hidden;text-decoration:none;color:#effff2;background:#14251a;border:1px solid var(--line);border-radius:12px;transition:transform .15s,border-color .15s}
+.game{aspect-ratio:1/1;display:flex;flex-direction:column;overflow:hidden;text-decoration:none;color:#effff2;background:var(--panel);border:1px solid var(--line);border-radius:12px;transition:transform .15s,border-color .15s}
 .game:hover{transform:translateY(-3px);border-color:var(--green)}
-.game img{display:block;width:100%;height:72%;object-fit:cover;background:#203b28}
+.game img{display:block;width:100%;height:72%;object-fit:contain;padding:8px;background:#203b28}
 .game-info{padding:10px 13px;display:flex;flex-direction:column;justify-content:center;flex:1}
 .name{font-size:17px;font-weight:800}
 .tag{font-size:12px;color:#a9c6b0}
@@ -25,9 +28,12 @@ footer{margin-top:48px;color:#789580;font-size:12px}
 </style>
 </head>
 <body><main>
-<header class="brand"><div class="logo">T</div><span>TALLMII GAMES</span></header>
+<header><a class="brand" href="n64hub.html" aria-label="Open N64Hub"><span class="logo">T</span><span>TALLMII GAMES</span></a></header>
 <h1>Choose a <span>game.</span></h1>
-<p>Click a game square to open it on its own page.</p>
+<p>Click a game square to open it on its own page. Click the top logo to visit N64Hub.</p>
 <section aria-label="Games"><h2>GAME LIBRARY</h2><div class="games">
-<a class="game" href="geo.html"><img src="images.jpg" alt="Geo game icon"><span class="game-info"><span class="name">Geometrey Dash</span><span class="tag">Explore the world</span></span></a>
-<a class="game" href="mario.html"><img src="images/sm64.jpg"
+<a class="game" href="geo.html"><img src="images.jpg" alt="Geometry Dash game icon"><span class="game-info"><span class="name">Geometry Dash</span><span class="tag">Explore the world</span></span></a>
+<a class="game" href="mario.html"><img src="images/sm64.jpg" alt="Super Mario 64 game icon"><span class="game-info"><span class="name">Super Mario 64</span><span class="tag">Jump into the adventure</span></span></a>
+</div></section>
+<footer>© Tallmii Games</footer>
+</main></body></html>
