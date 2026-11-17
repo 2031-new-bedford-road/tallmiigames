@@ -1,5 +1,29 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#123b25"><title>Geo · Tallmii Games</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#123b25">
+<script>
+/* Remove the old site-wide isolation worker. It was applying COEP to every page,
+   which prevents third-party games from loading in their iframes. */
+document.documentElement.style.visibility='hidden';
+(async()=>{
+  try {
+    const regs=await navigator.serviceWorker?.getRegistrations?.()||[];
+    let removed=false;
+    for(const reg of regs){
+      const scriptURL=reg.active?.scriptURL||reg.waiting?.scriptURL||reg.installing?.scriptURL||'';
+      if(scriptURL && new URL(scriptURL).pathname==='/coi_serviceworker.js'){
+        await reg.unregister();
+        removed=true;
+      }
+    }
+    if(removed && !sessionStorage.getItem('removedSiteWideCOI')){
+      sessionStorage.setItem('removedSiteWideCOI','1');
+      location.reload();
+      return;
+    }
+  } catch(e){ console.warn('Could not clean up old isolation worker',e); }
+  document.documentElement.style.visibility='';
+})();
+</script><title>Geo · Tallmii Games</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#08130c;color:#effff2;font:15px system-ui,Segoe UI,sans-serif}.top{height:66px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 20px;background:#11251a;border-bottom:1px solid #245235}.brand{font-weight:900;letter-spacing:1px}.back,.open{color:#dfffe7;text-decoration:none;background:#1c432a;border:1px solid #326b43;border-radius:9px;padding:9px 13px;font-size:13px;font-weight:700}.back:hover,.open:hover{background:#276039}.heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px}.heading h1{font-size:18px;margin:0}.frame{height:calc(100vh - 124px);min-height:300px;background:#050805}iframe{width:100%;height:100%;border:0;background:#050805}.hint{padding:9px 20px;color:#8eae96;font-size:11px}
 </style></head><body>
