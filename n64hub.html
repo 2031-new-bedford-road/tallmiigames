@@ -3,7 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#123b25">\n<script src="./coi_serviceworker.js"></script>
+<meta name="theme-color" content="#123b25">
+<script>
+/* Remove the old site-wide isolation worker. It was applying COEP to every page,
+   which prevents third-party games from loading in their iframes. */
+document.documentElement.style.visibility='hidden';
+(async()=>{
+  try {
+    const regs=await navigator.serviceWorker?.getRegistrations?.()||[];
+    let removed=false;
+    for(const reg of regs){
+      const scriptURL=reg.active?.scriptURL||reg.waiting?.scriptURL||reg.installing?.scriptURL||'';
+      if(scriptURL && new URL(scriptURL).pathname==='/coi_serviceworker.js'){
+        await reg.unregister();
+        removed=true;
+      }
+    }
+    if(removed && !sessionStorage.getItem('removedSiteWideCOI')){
+      sessionStorage.setItem('removedSiteWideCOI','1');
+      location.reload();
+      return;
+    }
+  } catch(e){ console.warn('Could not clean up old isolation worker',e); }
+  document.documentElement.style.visibility='';
+})();
+</script>\n<script src="./coi_serviceworker.js"></script>
 <title>N64Hub · Tallmii Games</title>
 <style>
 *{box-sizing:border-box}
