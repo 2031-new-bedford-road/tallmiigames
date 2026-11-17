@@ -46,7 +46,6 @@ p{max-width:620px;color:#a9c6b0;font-size:17px}
 <div class="games">
 <a class="game" href="mario.html" data-game="Super Mario 64" data-image="images/sm64.jpg"><img src="images/sm64.jpg" alt="Super Mario 64 game icon"><span class="game-info"><span class="name">Super Mario 64</span><span class="tag">Jump into the adventure</span></span></a>
 <a class="game" href="#ocarina" id="oot-card" data-game="The Legend of Zelda: Ocarina of Time" data-image="images/oot.jpg"><img src="images/oot.jpg" alt="The Legend of Zelda: Ocarina of Time game icon"><span class="game-info"><span class="name">Ocarina of Time</span><span class="tag">Play inside N64Hub</span></span></a>
-<a class="game" href="#majora" id="mm-card" data-game="The Legend of Zelda: Majora’s Mask" data-image="images/mm.jpg"><img src="images/mm.jpg" alt="The Legend of Zelda: Majora’s Mask game icon"><span class="game-info"><span class="name">Majora’s Mask</span><span class="tag">Play inside N64Hub</span></span></a>
 </div>
 </section>
 </div>
@@ -54,16 +53,11 @@ p{max-width:620px;color:#a9c6b0;font-size:17px}
 <div class="player-head"><h2>The Legend of Zelda: Ocarina of Time</h2><button class="back" id="oot-back" type="button">← Back to N64Hub</button></div>
 <iframe class="game-frame" id="oot-frame" title="The Legend of Zelda: Ocarina of Time" allow="cross-origin-isolated; fullscreen; gamepad; autoplay" allowfullscreen></iframe>
 </section>
-<section class="player" id="mm-player" aria-label="Majora’s Mask player">
-<div class="player-head"><h2>The Legend of Zelda: Majora’s Mask</h2><button class="back" id="mm-back" type="button">← Back to N64Hub</button></div>
-<iframe class="game-frame" id="mm-frame" title="The Legend of Zelda: Majora’s Mask" allow="cross-origin-isolated; fullscreen; gamepad; autoplay" allowfullscreen></iframe>
-</section>
 </main>
 <script>
 const library=document.getElementById('library');
 const players={
-  oot:{section:document.getElementById('oot-player'),frame:document.getElementById('oot-frame'),card:document.getElementById('oot-card'),path:'oot-recomp/',hash:'#ocarina'},
-  mm:{section:document.getElementById('mm-player'),frame:document.getElementById('mm-frame'),card:document.getElementById('mm-card'),path:'mm-recomp/',hash:'#majora'}
+  oot:{section:document.getElementById('oot-player'),frame:document.getElementById('oot-frame'),card:document.getElementById('oot-card'),path:'oot-recomp/',hash:'#ocarina'}
 };
 function remember(card){
   try{
@@ -95,11 +89,9 @@ function closePlayers(){
   window.scrollTo(0,0);
 }
 players.oot.card.addEventListener('click',event=>{event.preventDefault();openGame('oot')});
-players.mm.card.addEventListener('click',event=>{event.preventDefault();openGame('mm')});
 document.getElementById('oot-back').addEventListener('click',()=>{if(location.hash==='#ocarina')history.back();else closePlayers()});
-document.getElementById('mm-back').addEventListener('click',()=>{if(location.hash==='#majora')history.back();else closePlayers()});
 window.addEventListener('popstate',closePlayers);
-document.querySelectorAll('a[data-game]:not(#oot-card):not(#mm-card)').forEach(link=>{
+document.querySelectorAll('a[data-game]:not(#oot-card)').forEach(link=>{
   link.addEventListener('click',()=>remember(link));
 });
 </script>
