@@ -26,6 +26,7 @@ footer{margin-top:48px;color:#789580;font-size:12px}
 <footer>© Tallmii Games</footer>
 </main>
 <script>
+document.querySelectorAll('a[data-game]').forEach(a=>a.addEventListener('click',()=>{try{const key='tallmiiRecentlyPlayed';let list=JSON.parse(localStorage.getItem(key)||'[]');list=[{name:a.dataset.game,url:a.href,image:a.dataset.image},...list.filter(x=>x.name!==a.dataset.game)].slice(0,8);localStorage.setItem(key,JSON.stringify(list))}catch(e){}}));
 (function(){
 const key='tallmiiRecentlyPlayed';
 const area=document.getElementById('recent-games');
