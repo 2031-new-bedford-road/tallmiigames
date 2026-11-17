@@ -78,9 +78,9 @@ function openGame(name){
   library.hidden=true;
   Object.entries(players).forEach(([key,item])=>{
     item.section.classList.toggle('active',key===name);
-    if(key!==name)item.frame.src='about:blank';
+    if(key!==name){item.frame.src='about:blank';delete item.frame.dataset.loaded;}
   });
-  if(!game.frame.src || game.frame.src==='about:blank')game.frame.src=game.path;
+  if(game.frame.dataset.loaded!=='true'){game.frame.src=game.path;game.frame.dataset.loaded='true';}
   history.pushState({game:name},'',game.hash);
   remember(game.card);
   window.scrollTo(0,0);
@@ -89,6 +89,7 @@ function closePlayers(){
   Object.values(players).forEach(game=>{
     game.section.classList.remove('active');
     game.frame.src='about:blank';
+    delete game.frame.dataset.loaded;
   });
   library.hidden=false;
   window.scrollTo(0,0);
