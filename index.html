@@ -15,7 +15,9 @@ main{max-width:1100px;margin:auto;padding:38px 22px}
 .brand:hover span:last-child{color:var(--green)}
 h1{font-size:clamp(36px,7vw,60px);line-height:1.05;margin:54px 0 10px;letter-spacing:-2px}
 h1 span{color:var(--green)}
-p{color:#a9c6b0;margin:0 0 32px}
+p{color:#a9c6b0;margin:0 0 24px}
+.hub-button{display:inline-block;margin:0 0 38px;padding:12px 18px;border-radius:9px;background:#39c66b;color:#06200e;text-decoration:none;font-weight:900}
+.hub-button:hover{background:#56dc83}
 h2{font-size:17px;margin:0 0 16px}
 .games{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px}
 .game{aspect-ratio:1/1;display:flex;flex-direction:column;overflow:hidden;text-decoration:none;color:#effff2;background:var(--panel);border:1px solid var(--line);border-radius:12px;transition:transform .15s,border-color .15s}
@@ -30,10 +32,10 @@ footer{margin-top:48px;color:#789580;font-size:12px}
 <body><main>
 <header><a class="brand" href="n64hub.html" aria-label="Open N64Hub"><span class="logo">T</span><span>TALLMII GAMES</span></a></header>
 <h1>Choose a <span>game.</span></h1>
-<p>Click a game square to open it on its own page. Click the top logo to visit N64Hub.</p>
+<p>Browse the game library, or head over to the Nintendo 64 collection.</p>
+<a class="hub-button" href="n64hub.html">Go to N64Hub →</a>
 <section aria-label="Games"><h2>GAME LIBRARY</h2><div class="games">
 <a class="game" href="geo.html"><img src="images.jpg" alt="Geometry Dash game icon"><span class="game-info"><span class="name">Geometry Dash</span><span class="tag">Explore the world</span></span></a>
-<a class="game" href="mario.html"><img src="images/sm64.jpg" alt="Super Mario 64 game icon"><span class="game-info"><span class="name">Super Mario 64</span><span class="tag">Jump into the adventure</span></span></a>
 </div></section>
 <footer>© Tallmii Games</footer>
 </main></body></html>
