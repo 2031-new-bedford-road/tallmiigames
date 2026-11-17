@@ -70,7 +70,7 @@ p{max-width:620px;color:#a9c6b0;font-size:17px}
 <section aria-label="Nintendo 64 games">
 <div class="games">
 <a class="game" href="mario.html" data-game="Super Mario 64" data-image="images/sm64.jpg"><img src="images/sm64.jpg" alt="Super Mario 64 game icon"><span class="game-info"><span class="name">Super Mario 64</span><span class="tag">Jump into the adventure</span></span></a>
-<a class="game" href="#ocarina" id="oot-card" data-game="The Legend of Zelda: Ocarina of Time" data-image="images/oot.jpg"><img src="images/oot.jpg" alt="The Legend of Zelda: Ocarina of Time game icon"><span class="game-info"><span class="name">Ocarina of Time</span><span class="tag">Play inside N64Hub</span></span></a>
+<a class="game" href="oot-recomp/" id="oot-card" data-game="The Legend of Zelda: Ocarina of Time" data-image="images/oot.jpg"><img src="images/oot.jpg" alt="The Legend of Zelda: Ocarina of Time game icon"><span class="game-info"><span class="name">Ocarina of Time</span><span class="tag">Play inside N64Hub</span></span></a>
 </div>
 </section>
 </div>
@@ -113,7 +113,7 @@ function closePlayers(){
   library.hidden=false;
   window.scrollTo(0,0);
 }
-players.oot.card.addEventListener('click',event=>{event.preventDefault();openGame('oot')});
+
 document.getElementById('oot-back').addEventListener('click',()=>{if(location.hash==='#ocarina')history.back();else closePlayers()});
 window.addEventListener('popstate',closePlayers);
 document.querySelectorAll('a[data-game]:not(#oot-card)').forEach(link=>{
