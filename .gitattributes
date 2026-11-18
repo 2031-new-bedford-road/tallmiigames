@@ -1,0 +1,2 @@
+Zelda64Recompiled.wasm filter=lfs diff=lfs merge=lfs -text
+mm-recomp/Zelda64Recompiled.wasm filter=lfs diff=lfs merge=lfs -text
