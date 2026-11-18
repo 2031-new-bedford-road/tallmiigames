@@ -71,6 +71,7 @@ p{max-width:620px;color:#a9c6b0;font-size:17px}
 <div class="games">
 <a class="game" href="mario.html" data-game="Super Mario 64" data-image="images/sm64.jpg"><img src="images/sm64.jpg" alt="Super Mario 64 game icon"><span class="game-info"><span class="name">Super Mario 64</span><span class="tag">Jump into the adventure</span></span></a>
 <a class="game" href="oot-recomp/" id="oot-card" data-game="The Legend of Zelda: Ocarina of Time" data-image="images/oot.jpg"><img src="images/oot.jpg" alt="The Legend of Zelda: Ocarina of Time game icon"><span class="game-info"><span class="name">Ocarina of Time</span><span class="tag">Play inside N64Hub</span></span></a>
+<a class="game" href="mm-recomp/" id="mm-card" data-game="The Legend of Zelda: Majora’s Mask" data-image="images/mm.jpg"><img src="images/mm.jpg" alt="The Legend of Zelda: Majora’s Mask game icon"><span class="game-info"><span class="name">Majora’s Mask</span><span class="tag">Play the adventure</span></span></a>
 </div>
 </section>
 </div>
@@ -88,7 +89,7 @@ function remember(card){
   try{
     const key='tallmiiRecentlyPlayed';
     let items=JSON.parse(localStorage.getItem(key)||'[]');
-    items=[{name:card.dataset.game,url:location.href,image:card.dataset.image},...items.filter(item=>item.name!==card.dataset.game)].slice(0,8);
+    items=[{name:card.dataset.game,url:new URL(card.getAttribute('href'),location.href).href,image:card.dataset.image},...items.filter(item=>item.name!==card.dataset.game)].slice(0,8);
     localStorage.setItem(key,JSON.stringify(items));
   }catch(error){}
 }
@@ -116,7 +117,7 @@ function closePlayers(){
 
 document.getElementById('oot-back').addEventListener('click',()=>{if(location.hash==='#ocarina')history.back();else closePlayers()});
 window.addEventListener('popstate',closePlayers);
-document.querySelectorAll('a[data-game]:not(#oot-card)').forEach(link=>{
+document.querySelectorAll('a[data-game]').forEach(link=>{
   link.addEventListener('click',()=>remember(link));
 });
 </script>
